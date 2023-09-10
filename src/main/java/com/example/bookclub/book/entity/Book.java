@@ -1,4 +1,4 @@
-package com.example.bookclub.book;
+package com.example.bookclub.book.entity;
 
 
 import lombok.*;
@@ -6,11 +6,10 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-
-@NoArgsConstructor
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Book extends BaseTimeEntity{
+public class Book extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -42,10 +41,6 @@ public class Book extends BaseTimeEntity{
     @Column(nullable = false, unique = true)
     private Long isbn;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Builder
     public Book(Long id, String title, String author,
                 String translator, String publisher, LocalDate publicationDate,
@@ -62,31 +57,45 @@ public class Book extends BaseTimeEntity{
         this.isbn = isbn;
     }
 
-    public void update(BookRequestDto requestDto) {
-        if (requestDto.getTitle() != null) {
-            this.title = requestDto.getTitle();
-        }
-        if (requestDto.getAuthor() != null) {
-            this.author = requestDto.getAuthor();
-        }
-        if (requestDto.getTranslator() != null) {
-            this.translator = requestDto.getTranslator();
-        }
-        if (requestDto.getPublisher() != null) {
-            this.publisher = requestDto.getPublisher();
-        }
-        if (requestDto.getPublicationDate() != null) {
-            this.publicationDate = requestDto.getPublicationDate();
-        }
-        if (requestDto.getDescription() != null) {
-            this.description = requestDto.getDescription();
-        }
-        if (requestDto.getContents() != null) {
-            this.contents = requestDto.getContents();
-        }
-        if (requestDto.getCoverImageUrl() != null) {
-            this.coverImageUrl = requestDto.getCoverImageUrl();
-        }
+    public void setId(Long id) {
+        this.id = id;
     }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setTranslator(String translator) {
+        this.translator = translator;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public void setPublicationDate(LocalDate publicationDate) {
+        this.publicationDate = publicationDate;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
+    }
+
+    public void setCoverImageUrl(String coverImageUrl) {
+        this.coverImageUrl = coverImageUrl;
+    }
+
+    public void setIsbn(Long isbn) {
+        this.isbn = isbn;
+    }
+
 }
 

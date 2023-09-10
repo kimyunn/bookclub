@@ -1,4 +1,6 @@
-package com.example.bookclub.book;
+package com.example.bookclub.book.repository;
+
+import com.example.bookclub.book.entity.Book;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -61,16 +63,16 @@ public class MapBookRepository implements BookRepository{
     }
 
     @Override
-    public Book findByIsbn(Long isbn) {
+    public Boolean existsByIsbn(Long isbn) {
         for (Long key : db.keySet()) {
-            Long title = db.get(key).getIsbn();
+            Long existingBookIsbn = db.get(key).getIsbn();
 
-            if (title.equals(isbn)) {
-                return db.get(key);
+            if (existingBookIsbn.equals(isbn)) {
+                return true;
             }
         }
-
-        return null;
+        return false;
     }
+
 
 }

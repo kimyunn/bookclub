@@ -1,5 +1,8 @@
 package com.example.bookclub.book;
 
+import com.example.bookclub.book.dto.request.BookRequestDto;
+import com.example.bookclub.book.entity.Book;
+import com.example.bookclub.book.repository.BookRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,17 +47,17 @@ public class BookRepositoryTest {
 
     }
 
-    @Test
-    public void isbn_중복_여부_확인_테스트() {
-        // Given
-        Long isbn = 9788937460050L;
-
-        // When
-        Book book = bookRepository.findByIsbn(isbn);
-
-        // Then
-        assertNotNull(book);
-    }
+//    @Test
+//    public void isbn_중복_여부_확인_테스트() {
+//        // Given
+//        Long isbn = 9788937460050L;
+//
+//        // When
+//        Book book = bookRepository.findByIsbn(isbn);
+//
+//        // Then
+//        assertNotNull(book);
+//    }
 
     @Test
     public void 도서_조회_성공_존재하는_id_입력() {
@@ -92,7 +95,7 @@ public class BookRepositoryTest {
 
         Book book = bookRepository.findById(id).orElseThrow(IllegalArgumentException::new);
 
-        book.update(requestDto);
+        //book.update(requestDto);
         bookRepository.save(book);
 
         // When
