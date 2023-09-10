@@ -1,5 +1,6 @@
-package com.example.bookclub.book;
+package com.example.bookclub.book.dto.response;
 
+import com.example.bookclub.book.entity.Book;
 import lombok.Getter;
 
 import java.time.LocalDate;
