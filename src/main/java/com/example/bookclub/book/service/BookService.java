@@ -55,6 +55,7 @@ public class BookService {
         bookRepository.delete(book);
     }
 
+
     public Long updateBook(Long bookId, BookRequestDto requestDto) {
         log.info("dtoBooktitle={}", requestDto.getTitle());
         Book book = findByIdOrThrow(bookId);
@@ -102,5 +103,5 @@ public class BookService {
                 .collect(Collectors.toList());
 
     }
-
 }
+

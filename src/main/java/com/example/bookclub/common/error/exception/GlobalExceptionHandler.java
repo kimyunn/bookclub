@@ -13,8 +13,6 @@ import javax.validation.ConstraintViolationException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-
-    // 아래 예외와 헷갈려가지고 의도치않게 미리 만들게되었습니다. 유저도메인때 필요할거 같아서 일단 그냥 남겨뒀습니다!
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error("MethodArgumentNotValidException", e);
@@ -35,6 +33,7 @@ public class GlobalExceptionHandler {
                 .body(response);
     }
 
+
     @ExceptionHandler(BusinessException.class)
     protected ResponseEntity<ErrorResponse> handleBusinessException(BusinessException e) {
         log.error("handleEntityNotFoundException", e);
@@ -45,5 +44,5 @@ public class GlobalExceptionHandler {
                 .status(errorCode.getStatus())
                 .body(response);
     }
-
 }
+

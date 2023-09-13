@@ -18,5 +18,5 @@ public class BookMultipleResponseDto {
         this.publisher = book.getPublisher();
         this.coverImageUrl = book.getCoverImageUrl();
     }
-
 }
+

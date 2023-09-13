@@ -30,6 +30,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
+
     @PostMapping
     public ResponseEntity<Long> registerBook(@RequestBody BookRequestDto requestDto) {
         Long id = bookService.registerBook(requestDto);
@@ -38,6 +39,7 @@ public class BookController {
                 .status(HttpStatus.CREATED)
                 .body(id);
     }
+
 
     @GetMapping("/{bookId}")
     public ResponseEntity<BookResponseDto> getBook(@PathVariable Long bookId) {
@@ -48,6 +50,7 @@ public class BookController {
                 .body(responseDto);
     }
 
+
     @DeleteMapping("/{bookId}")
     public ResponseEntity deleteBook(@PathVariable Long bookId) {
         bookService.deleteBook(bookId);
@@ -57,6 +60,7 @@ public class BookController {
                 .build();
 
     }
+
 
     @PatchMapping("/{bookId}")
     public ResponseEntity<Long> updateBook(@PathVariable Long bookId, @RequestBody BookRequestDto requestDto) {
@@ -99,3 +103,4 @@ public class BookController {
         }
     }
 }
+

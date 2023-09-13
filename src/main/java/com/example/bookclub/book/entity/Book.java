@@ -96,5 +96,5 @@ public class Book extends BaseTimeEntity {
     public void setIsbn(Long isbn) {
         this.isbn = isbn;
     }
-
 }
+

@@ -20,5 +20,4 @@ public interface JpaBookRepository extends JpaRepository<Book, Long>, BookReposi
     @Override
     @Query("SELECT b FROM Book b WHERE b.title LIKE CONCAT('%', :keyword, '%') OR b.author LIKE CONCAT('%', :keyword, '%') OR b.translator LIKE CONCAT('%', :keyword, '%')")
     List<Book> findByKeyword(@Param("keyword") String keyword);
-
 }

@@ -35,5 +35,5 @@ public class BookResponseDto {
         this.createdDate = entity.getCreatedDate();
         this.updatedDate = entity.getUpdatedDate();
     }
-
 }
+
