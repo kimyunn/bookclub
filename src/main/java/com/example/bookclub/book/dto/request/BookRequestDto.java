@@ -1,5 +1,6 @@
-package com.example.bookclub.book;
+package com.example.bookclub.book.dto.request;
 
+import com.example.bookclub.book.entity.Book;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -7,6 +8,7 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 public class BookRequestDto {
+
     private String title;
     private String author;
     private String translator;
@@ -18,9 +20,10 @@ public class BookRequestDto {
     private Long isbn;
 
     @Builder
-    public BookRequestDto(String title, String author, String translator,
-                          String publisher, LocalDate publicationDate,
-                          String description, String contents, String coverImageUrl, Long isbn) {
+    public BookRequestDto(String title, String author,
+                          String translator, String publisher,
+                          LocalDate publicationDate, String description,
+                          String contents, String coverImageUrl, Long isbn) {
         this.title = title;
         this.author = author;
         this.translator = translator;
@@ -46,3 +49,4 @@ public class BookRequestDto {
                 .build();
     }
 }
+
