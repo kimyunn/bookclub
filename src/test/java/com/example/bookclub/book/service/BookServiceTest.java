@@ -1,7 +1,8 @@
 package com.example.bookclub.book.service;
 
-import com.example.bookclub.book.repository.BookRepository;
+import com.example.bookclub.repository.BookRepository;
 import com.example.bookclub.common.error.exception.BusinessException;
+import com.example.bookclub.service.BookService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
 package com.example.bookclub.book.repository;
 
-import com.example.bookclub.book.dto.request.BookRequestDto;
-import com.example.bookclub.book.entity.Book;
-import com.example.bookclub.book.repository.BookRepository;
+import com.example.bookclub.dto.request.BookRequestDto;
+import com.example.bookclub.domain.Book;
+import com.example.bookclub.repository.BookRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

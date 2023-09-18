@@ -1,6 +1,6 @@
-package com.example.bookclub.book.dto.request;
+package com.example.bookclub.dto.request;
 
-import com.example.bookclub.book.entity.Book;
+import com.example.bookclub.domain.Book;
 import lombok.*;
 
 import java.time.LocalDate;
