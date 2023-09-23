@@ -1,5 +1,6 @@
-package com.example.bookclub.book;
+package com.example.bookclub.book.repository;
 
+import com.example.bookclub.book.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,8 +18,6 @@ public interface JpaBookRepository extends JpaRepository<Book, Long>, BookReposi
     List<Book> findByNewBooks(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
     @Override
-    //@Query("SELECT b FROM book b WHERE b.title LIKE %:keyword% OR b.author LIKE %:keyword% OR b.translator LIKE %:keyword%")
     @Query("SELECT b FROM Book b WHERE b.title LIKE CONCAT('%', :keyword, '%') OR b.author LIKE CONCAT('%', :keyword, '%') OR b.translator LIKE CONCAT('%', :keyword, '%')")
     List<Book> findByKeyword(@Param("keyword") String keyword);
-
 }
