@@ -1,5 +1,6 @@
-package com.example.bookclub.common.error.exception;
+package com.example.bookclub.common.exception;
 
+import com.example.bookclub.common.exception.dto.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     protected ResponseEntity<ErrorResponse> handleBusinessException(BusinessException e) {
-        log.error("handleEntityNotFoundException", e);
+        log.error("BusinessException", e);
         ErrorCode errorCode = e.getErrorCode();
         ErrorResponse response = ErrorResponse.of(errorCode);
 

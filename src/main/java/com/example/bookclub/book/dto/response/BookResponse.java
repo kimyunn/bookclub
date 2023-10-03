@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
-public class BookResponseDto {
+public class BookResponse {
     private Long id;
     private String title;
     private String author;
@@ -21,7 +21,7 @@ public class BookResponseDto {
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
-    public BookResponseDto(Book entity) {
+    public BookResponse(Book entity) {
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.author = entity.getAuthor();

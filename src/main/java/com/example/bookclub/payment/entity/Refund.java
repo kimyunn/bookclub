@@ -1,6 +1,6 @@
-package com.example.bookclub.payment.domain;
+package com.example.bookclub.payment.entity;
 
-import com.example.bookclub.book.entity.BaseTimeEntity;
+import com.example.bookclub.common.entity.BaseTimeEntity;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 

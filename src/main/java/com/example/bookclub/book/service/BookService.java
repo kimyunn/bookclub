@@ -1,12 +1,13 @@
 package com.example.bookclub.book.service;
 
-import com.example.bookclub.book.dto.request.BookRequestDto;
-import com.example.bookclub.book.dto.response.BookResponseDto;
-import com.example.bookclub.book.dto.response.BookMultipleResponseDto;
+import com.example.bookclub.book.dto.request.BookRegisterRequest;
+import com.example.bookclub.book.dto.request.BookUpdateRequest;
+import com.example.bookclub.book.dto.response.BookResponse;
+import com.example.bookclub.book.dto.response.BookMultipleResponse;
 import com.example.bookclub.book.entity.Book;
+import com.example.bookclub.book.exception.BookDuplicationException;
+import com.example.bookclub.book.exception.BookNotFoundException;
 import com.example.bookclub.book.repository.BookRepository;
-import com.example.bookclub.common.error.exception.BusinessException;
-import com.example.bookclub.common.error.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
@@ -32,22 +33,20 @@ public class BookService {
     }
 
     @Transactional
-    public Long registerBook(BookRequestDto requestDto) {
-        validateDuplicateIsbn(requestDto.getIsbn());
-
-        return bookRepository.save(requestDto.toEntity()).getId();
+    public Long registerBook(BookRegisterRequest request) {
+        validateDuplicateIsbn(request.getIsbn());
+        return bookRepository.save(request.toEntity()).getId();
     }
 
     public void validateDuplicateIsbn(Long isbn) {
         if (bookRepository.existsByIsbn(isbn)) {
-            throw new BusinessException(ErrorCode.DUPLICATE_BOOK_ISBN);
+            throw new BookDuplicationException(String.format("입력한 isbn 번호가 존재합니다 isbn: %d", isbn));
         }
     }
 
-    public BookResponseDto getBook(Long bookId) {
+    public BookResponse getBook(Long bookId) {
         Book book = findByIdOrThrow(bookId);
-
-        return new BookResponseDto(book);
+        return new BookResponse(book);
     }
 
     public void deleteBook(Long bookId) {
@@ -56,19 +55,15 @@ public class BookService {
     }
 
 
-    public Long updateBook(Long bookId, BookRequestDto requestDto) {
-        log.info("dtoBooktitle={}", requestDto.getTitle());
+    public Long updateBook(Long bookId, BookUpdateRequest request) {
         Book book = findByIdOrThrow(bookId);
-        BeanUtils.copyProperties(requestDto, book, getNullPropertyNames(requestDto));
+        BeanUtils.copyProperties(request, book, getNullPropertyNames(request));
         bookRepository.save(book);
-        log.info("entityBooktitle={}" , book.getTitle());
-
         return bookId;
     }
 
     public Book findByIdOrThrow(Long bookId) {
-        Book book = bookRepository.findById(bookId).orElseThrow(() -> new BusinessException(ErrorCode.BOOK_NOT_FOUND));
-
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new BookNotFoundException(String.format("도서가 존재하지 않습니다. id: %d", bookId)));
         return book;
     }
 
@@ -86,20 +81,17 @@ public class BookService {
         return emptyNames.toArray(result);
     }
 
-    public List<BookMultipleResponseDto> getNewBooks() {
+    public List<BookMultipleResponse> getNewBooks() {
         LocalDate endDate = LocalDate.now();
         LocalDate startDate = endDate.minusMonths(1);
-        log.info("endDate={}", endDate);
-        log.info("startDate={]", startDate);
-
         return bookRepository.findByNewBooks(startDate, endDate).stream()
-                .map(BookMultipleResponseDto::new)
+                .map(BookMultipleResponse::new)
                 .collect(Collectors.toList());
     }
 
-    public List<BookMultipleResponseDto> getSearchBooks(String keyword) {
+    public List<BookMultipleResponse> getSearchBooks(String keyword) {
         return bookRepository.findByKeyword(keyword).stream()
-                .map(BookMultipleResponseDto::new)
+                .map(BookMultipleResponse::new)
                 .collect(Collectors.toList());
 
     }

@@ -1,8 +1,8 @@
 package com.example.bookclub.payment.service;
 
-import com.example.bookclub.common.error.exception.BusinessException;
-import com.example.bookclub.payment.domain.Payment;
-import com.example.bookclub.payment.dto.request.PaymentRequestDto;
+import com.example.bookclub.common.exception.BusinessException;
+import com.example.bookclub.payment.entity.Payment;
+import com.example.bookclub.payment.dto.request.PaymentRequest;
 import com.example.bookclub.payment.repository.PaymentRepository;
 import com.example.bookclub.payment.repository.RefundRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -31,7 +31,7 @@ public class PaymentServiceTest {
         Long userId = 3L;
         Long subscriptionId = 1L;
         Long paymentType = 1L;
-        PaymentRequestDto requestDto = PaymentRequestDto.builder()
+        PaymentRequest requestDto = PaymentRequest.builder()
                 .userId(userId)
                 .subscriptionId(subscriptionId)
                 .paymentTypeId(paymentType)
@@ -55,7 +55,7 @@ public class PaymentServiceTest {
         Long userId = 3L;
         Long subscriptionId = 7L;
         Long paymentType = 1L;
-        PaymentRequestDto requestDto = PaymentRequestDto.builder()
+        PaymentRequest requestDto = PaymentRequest.builder()
                 .userId(userId)
                 .subscriptionId(subscriptionId)
                 .paymentTypeId(paymentType)

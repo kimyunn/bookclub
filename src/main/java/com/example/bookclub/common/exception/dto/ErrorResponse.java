@@ -1,5 +1,6 @@
-package com.example.bookclub.common.error.exception;
+package com.example.bookclub.common.exception.dto;
 
+import com.example.bookclub.common.exception.ErrorCode;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,21 +20,18 @@ import java.util.stream.Collectors;
 public class ErrorResponse {
 
     private String message;
-    private int status;
     private String code;
     private List<FieldError> errors;
 
     private ErrorResponse(ErrorCode code) {
         this.message = code.getMessage();
-        this.status = code.getStatus().value();
         this.code = code.getErrorCode();
         this.errors = new ArrayList<>();
     }
 
     @Builder
-    public ErrorResponse(String message, int status, String code, List<FieldError> errors) {
+    public ErrorResponse(String message, String code, List<FieldError> errors) {
         this.message = message;
-        this.status = status;
         this.code = code;
         this.errors = errors;
     }
@@ -45,7 +43,6 @@ public class ErrorResponse {
     public static ErrorResponse of(ErrorCode errorCode, BindingResult bindingResult) {
         return ErrorResponse.builder()
                 .message(errorCode.getMessage())
-                .status(errorCode.getStatus().value())
                 .code(errorCode.getErrorCode())
                 .errors(FieldError.create(bindingResult))
                 .build();
@@ -54,7 +51,6 @@ public class ErrorResponse {
     public static ErrorResponse of(ErrorCode errorCode, Iterator<ConstraintViolation<?>> violationIterator) {
         return ErrorResponse.builder()
                 .message(errorCode.getMessage())
-                .status(errorCode.getStatus().value())
                 .code(errorCode.getErrorCode())
                 .errors(FieldError.create(violationIterator))
                 .build();

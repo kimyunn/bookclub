@@ -4,16 +4,16 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class PaymentRequestDto {
+public class PaymentRequest {
     private Long userId;
     private Long subscriptionId;
     private Long paymentTypeId;
 
-    public PaymentRequestDto() {
+    public PaymentRequest() {
     }
 
     @Builder
-    public PaymentRequestDto(Long userId, Long subscriptionId, Long paymentTypeId) {
+    public PaymentRequest(Long userId, Long subscriptionId, Long paymentTypeId) {
         this.userId = userId;
         this.subscriptionId = subscriptionId;
         this.paymentTypeId = paymentTypeId;
