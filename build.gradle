@@ -38,6 +38,9 @@ dependencies {
 	// https://mvnrepository.com/artifact/junit/junit
 	testImplementation 'junit:junit:4.13.2'
 
+	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
+	implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
+
 }
 
 tasks.named('test') {

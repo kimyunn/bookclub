@@ -4,14 +4,14 @@ import com.example.bookclub.book.entity.Book;
 import lombok.*;
 
 @Getter
-public class BookMultipleResponseDto {
+public class BookMultipleResponse {
     private String title;
     private String author;
     private String translator;
     private String publisher;
     private String coverImageUrl;
 
-    public BookMultipleResponseDto(Book book) {
+    public BookMultipleResponse(Book book) {
         this.title = book.getTitle();
         this.author = book.getAuthor();
         this.translator = book.getTranslator();

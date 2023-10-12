@@ -1,8 +1,13 @@
-package com.example.bookclub.common.error.exception;
+package com.example.bookclub.common.exception;
 
 public class BusinessException extends RuntimeException{
 
     private ErrorCode errorCode;
+
+    public BusinessException(String message, ErrorCode errorCode) {
+        super(message);
+        this.errorCode = errorCode;
+    }
 
     public BusinessException(ErrorCode errorCode) {
         super(errorCode.getMessage());

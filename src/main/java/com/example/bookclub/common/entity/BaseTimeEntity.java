@@ -1,4 +1,4 @@
-package com.example.bookclub.book.entity;
+package com.example.bookclub.common.entity;
 
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;

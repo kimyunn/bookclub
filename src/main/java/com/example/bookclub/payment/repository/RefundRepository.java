@@ -1,6 +1,6 @@
 package com.example.bookclub.payment.repository;
 
-import com.example.bookclub.payment.domain.Refund;
+import com.example.bookclub.payment.entity.Refund;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RefundRepository extends JpaRepository<Refund, Long> {

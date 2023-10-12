@@ -1,6 +1,7 @@
 package com.example.bookclub.book.entity;
 
 
+import com.example.bookclub.common.entity.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;

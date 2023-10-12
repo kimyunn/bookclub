@@ -1,4 +1,4 @@
-package com.example.bookclub.payment.domain;
+package com.example.bookclub.payment.entity;
 
 import lombok.Builder;
 import lombok.Getter;

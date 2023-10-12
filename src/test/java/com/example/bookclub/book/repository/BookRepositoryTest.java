@@ -1,8 +1,7 @@
 package com.example.bookclub.book.repository;
 
-import com.example.bookclub.book.dto.request.BookRequestDto;
+import com.example.bookclub.book.dto.request.BookRegisterRequest;
 import com.example.bookclub.book.entity.Book;
-import com.example.bookclub.book.repository.BookRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class BookRepositoryTest {
     @DisplayName("도서 등록 성공 ")
     public void bookRegisterSuccess() {
         //given
-        BookRequestDto requestBook = BookRequestDto.builder()
+        BookRegisterRequest requestBook = BookRegisterRequest.builder()
                 .title("노인과바다")
                 .author("어니스트 헤밍웨이")
                 .translator("김욱동")
