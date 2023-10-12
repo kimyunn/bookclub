@@ -16,7 +16,13 @@ public enum ErrorCode {
     // Payment
     PAYMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "p001", "결제 내역을 찾을 수 없습니다."),
     SUBSCRIPTION_NOT_FOUND(HttpStatus.NOT_FOUND, "p002", "해당 구독권을 찾을 수 없습니다."),
-    PAYMENT_TYPE_NOT_FOUND(HttpStatus.NOT_FOUND, "p003", "해당 결제타입을 찾을 수 없습니다.");
+    PAYMENT_TYPE_NOT_FOUND(HttpStatus.NOT_FOUND, "p003", "해당 결제타입을 찾을 수 없습니다."),
+
+    // user
+    // 로그인시도 -> 가입되지 않은 email
+    EMAIL_NOT_FOUND(HttpStatus.NOT_FOUND,"u001", "가입되지 않은 email입니다."),
+    // 잘못된 비밀번호로 로그인 시도
+    INVALID_PASSWORD(HttpStatus.UNAUTHORIZED,"u002", "잘못된 비빌번호 입니다.");
 
     private final HttpStatus status;
     private final String errorCode;
